@@ -9,7 +9,7 @@ body{
 .top{
   display: grid;
   grid-template-columns: 1fr 5fr 1fr;
-  gap:10px;
+  gap:30px;
   height: 8vh;
   margin: 30px 20px 20px;
 }
@@ -17,7 +17,7 @@ body{
   display: grid;
   grid-template-columns: 1fr 5fr 1fr;
   height: 77vh;
-  gap:10px;
+  gap:30px;
   margin:auto 20px;
 }
 .sidebar{
@@ -32,7 +32,7 @@ body{
 
 /*top container*/
 .top .container h1{
-  padding-left:50px;
+  text-align:center;
 }
 
 
@@ -332,10 +332,8 @@ footer a{
 .detail-side{
   text-align: center;
   padding:3px 5px;
-  margin:20px auto;
   border: 5px dotted pink;
   border-radius: 15px;
-  width: 70%;
 }
 .detail-side .detail-menu{
   border-bottom:  5px dotted pink;
@@ -374,6 +372,24 @@ footer a{
 .detail-title .title{
   font-weight: 800;
   font-size: 1.5rem;
+}
+
+.detail-title .detail-model{
+  font-size: 1.2rem;
+  font-weight: 600;
+  background-color:#d0ede7;
+  cursor:pointer;
+  margin:5px auto;
+  width: 90%;
+  padding:5px;
+  border-radius: 10px;
+}
+.detail-title .detail-model:hover{
+  font-weight: 1000;
+  font-size: 1.4rem;
+  background-color: pink;
+  color: deeppink;
+  cursor:pointer;
 }
 .detail-comment{
   margin:30px 0;

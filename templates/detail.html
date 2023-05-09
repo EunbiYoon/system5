@@ -4,6 +4,13 @@
 {% block name %}{{ post_detail.category}} Dashboard on {{ post_detail.title }}{% endblock %}
 
 {% block sidebar %}
+
+    <div class="detail-title">
+        <div class="title">Choose Model</div>
+        <div class="detail-model">Dryer</div>
+        <div class="detail-model">Front Loader</div>
+        <div class="detail-model">Top Loader</div>
+    </div>
     <div class="detail-side">
         <div class="detail-menu">
             Menu
@@ -59,19 +66,22 @@
     <table>
         <thead>
             <tr>
-                <th>Index</th>
-                <th>Name</th>
-                <th>Age</th>
-                <th>Country</th>
+                {% for column in detail_table_data.columns %}
+                    <th>{{column}}</th>
+                {% endfor %}
             </tr>
         </thead>
         <tbody>
-            {% for row in data %}
+            {% for index in detail_table_data.index %}
             <tr>
-                <td>{{row.index}}</td>
-                <td>{{row.Name}}</td>
-                <td>{{row.Age}}</td>
-                <td>{{row.Country}}</td>
+                <th>{{index}}</th>
+                <td>dd</td>
+                <td>dd</td>
+                <td>dd</td>
+                <td>dd</td>
+                <td>dd</td>
+                <td>dd</td>
+                <td>dd</td>
             </tr>
             {% endfor %}
         </tbody>
@@ -81,10 +91,6 @@
 {% endblock %}
 
 {% block navigator %}
-    <div class="detail-title">
-        <div class="title">{{ post_detail.title }}</div>
-        <div class="time">Updated {{ post_detail.date_added|date:"M.d.Y h:i" }}
-    </div>
     <div class="detail-comment">
         <div class="title">Comments</div>
         <div class="content">
