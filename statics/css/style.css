@@ -385,12 +385,11 @@ footer a{
   grid-template-columns: 1fr 1fr 1fr;
   background-color: #10abff;
 }
-.detial-title .model .model1, .model2, .model3{
-  background-color:rgba(167, 255, 226, 0.574);
+.detail-title .model .model1, .model2,.model3{
+  border: 1px solid aquamarine;
 }
 .detail-title .model .model1:hover, .model2:hover,.model3:hover{
   font-weight: 1000;
-  font-size: 1.4rem;
   background-color: deeppink;
   color:white;
   cursor:pointer;
