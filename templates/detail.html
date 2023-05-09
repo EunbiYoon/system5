@@ -1,0 +1,111 @@
+{% extends 'base.html' %}
+
+{% block title %}Report{% endblock %}
+{% block name %}{{ post_detail.category}} Dashboard on {{ post_detail.title }}{% endblock %}
+
+{% block sidebar %}
+    <div class="detail-side">
+        <div class="detail-menu">
+            Menu
+        </div>
+        <a href="{% url 'home_url' %}">
+            <div class="detail-url">Home</div>
+        </a>
+        <a href="{% url 'category_url' 'bom-comparison' %}">
+            <div class="detail-url">BOM Comparison</div>
+        </a>
+        <a href="{% url 'category_url' 'cost-review' %}">
+            <div class="detail-url">Cost Review</div>
+        </a>
+        <a href="{% url 'category_url' 'vi-activity' %}">
+            <div class="detail-url">VI Activity</div>
+        </a>
+    </div>
+{% endblock %}
+
+{% block container %}
+    {% load static %}
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- graph -->
+    <div class="detail-graph"><canvas id="chart"></canvas></div>
+    <script>
+        var chartData=JSON.parse('{{detail_graph_value|safe}}');
+        var chartLabels=JSON.parse('{{ detail_graph_label|safe }}');
+        var chartConfig={
+            type:'line',
+            data:{
+                labels:chartLabels,
+                datasets:[{
+                    label:'vs BOM',
+                    data:chartData,
+                    backgroundColor:'rgba(255,99,132,0.2)',
+                    borderColor:'rgba(255,99,132,1)',
+                    bordreWidth:1
+                }]
+            },
+            options:{
+                scales:{
+                    y:{
+                        beginAtZero:true
+                    }
+                }
+            }
+        };
+        var chart=new Chart(document.getElementById('chart'), chartConfig);
+    </script>
+
+    <!-- table -->
+    <table>
+        <thead>
+            <tr>
+                <th>Index</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Country</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in data %}
+            <tr>
+                <td>{{row.index}}</td>
+                <td>{{row.Name}}</td>
+                <td>{{row.Age}}</td>
+                <td>{{row.Country}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    
+{% endblock %}
+
+{% block navigator %}
+    <div class="detail-title">
+        <div class="title">{{ post_detail.title }}</div>
+        <div class="time">Updated {{ post_detail.date_added|date:"M.d.Y h:i" }}
+    </div>
+    <div class="detail-comment">
+        <div class="title">Comments</div>
+        <div class="content">
+            {% if not post_detail.comment_model.all %}
+                <p>No comments yet!</p>
+            {% endif %}
+            {% for comment in post_detail.comment_model.all %}
+                <div class="detail-individual">
+                    <div class="right">{{comment.commenter_name}}</div>
+                    <div class="left">{{comment.date_added|date:"m.d h:i" }}</div>
+                    <div class="bottom">{{comment.comment_body}}</div>
+                </div>    
+                <div class="detail-individual-space"><small>e</small></div>
+            {% endfor %}
+            {% if user.is_authenticated %}
+                <form method="post" action="{% url 'detail_url' post_detail.slug post_detail.id %}">
+                    {% csrf_token %}
+                    {{ form_detail.as_table }}
+                    <input type="submit" value="Add Comment">
+                </form>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

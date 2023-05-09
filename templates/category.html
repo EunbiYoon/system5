@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ category_pair.title }}{% endblock %}
+{% block name %}{{ category_pair.title }}{% endblock %}
+
+{% block container %}
+    <div class="category">
+        {% for cat in category_pair.post_model.all %}
+            <a href="{% url 'detail_url' cat.slug cat.id%}">
+                <div class="category-detail">
+                    {{ cat.title }}
+                    <br/>{{ cat.date_added|date:"d M, y h:i" }}
+                </div>
+            </a>
+        {% endfor %}
+    </div>
+{% endblock %}

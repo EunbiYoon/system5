@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block name %}<div class="home-name">Welcome to Data Center</div>{% endblock %}
+
+{% block sidebar %}
+    <div class="home-history">
+        <div class="name">Recent Report</div>
+        {% for post in posts_set %}
+            <a href="{% url 'detail_url' post.slug post.id %}">
+                <div class="category">{{ post.category }}</div>
+                <div class="title">{{ post.title }}</div>
+                <div class="time">{{ post.date_added|date:"d M, y h:i" }}</div>
+                <div class="intro">{{ post.intro }}</div>
+                <div class="review">Detail Review</div>
+            </a>
+        {% endfor %}
+    </div>
+{% endblock %}
+
+
+{% block container %}
+    <div class="home-container">
+        <div class="hexagonArea first">
+            <a href="{% url 'category_url' 'bom-comparison'%}">
+                <div class="hexagon">
+                    <img src="https://img.icons8.com/wired/64/null/compare.png"/>
+                    <h3>BOM Comparion</h3>
+                </div>
+            </a>
+            <a href="{% url 'category_url' 'cost-review'%}">
+                <div class="hexagon">
+                    <img src="https://img.icons8.com/ios/50/null/combo-chart--v1.png"/>
+                    <h3>Cost Review</h3>
+                </div>
+            </a>
+            <a href="{% url 'category_url' 'vi-activity'%}">
+                <div class="hexagon">
+                    <img src="https://img.icons8.com/wired/64/null/low-price.png"/>
+                    <h3>VI Activity</h3>
+                </div>
+            </a>
+        </div>
+        <div class="hexagonArea last">
+            <div class="hexagon">
+                <img src="https://img.icons8.com/ios-filled/50/null/activity-history.png"/>
+                <h3>Report History</h3>
+            </div>
+            <div class="hexagon">
+                <img src="https://img.icons8.com/glyph-neue/64/null/comments--v1.png"/>
+                <h3>Comment History</h3>
+            </div>
+        </div>
+        <!-- <div class="click">
+            <img src="https://img.icons8.com/ios-filled/50/null/nui2.png"/>
+        </div> -->
+    </div>
+{% endblock%}
+
+
