@@ -499,7 +499,10 @@ footer a{
 .category{
   text-align: center;
   margin-top:30px;
-  
+}
+.category-name{
+  text-align: center;
+  font-size: 3rem;
 }
 .category a{
   text-decoration:none;
