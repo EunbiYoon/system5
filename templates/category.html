@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block title %}{{ category_pair.title }}{% endblock %}
-{% block name %}<div class="category-name">{{ category_pair.title }}</div>{% endblock %}
+{% block name %}<div class="category-name">All {{ category_pair.title }} Report</div>{% endblock %}
 
 {% block container %}
     <div class="category">
@@ -9,7 +9,7 @@
             <a href="{% url 'detail_url' cat.slug cat.id%}">
                 <div class="category-detail">
                     <div class="title">{{ cat.title }} Report</div>
-                    <div class="date">Updated on {{ cat.date_added|date:"M d Y" }}</div>
+                    <div class="date">Updated on {{ cat.date_added|date:"Y.m.d" }}</div>
                 </div>
             </a>
         {% endfor %}
