@@ -449,22 +449,23 @@ footer a{
   display: grid;
   grid-template-columns: 2fr 1fr;
   grid-template-rows: 1fr 1fr;
-  padding:5px 15px;
+  padding:5px 10px;
+  font-size: 0.9rem;
 }
 .detail-individual .right{
   grid-column: 1;
   grid-row: 1;
-  font-weight: 600;
 }
 .detail-individual .left{
   grid-column: 2;
   grid-row: 1;
-  font-size: 0.8rem;
+  font-size: 0.7rem;
   text-align: right;
 }
 .detail-individual .bottom{
   grid-column: 1;
   grid-row: 2;
+  font-size: 0.8rem;
 }
 .detail-individual-space{
   color:white;
