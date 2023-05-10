@@ -55,7 +55,7 @@ def detailView(request, slug, pk):
         'form_detail':comment_form,
         'detail_graph_label':json.dumps(graph_label),
         'detail_graph_value':json.dumps(graph_value),
-        'detail_table_data':table_json
+        'detail_table_data':table_json,
     }
     return render(request, 'detail.html', context)
 

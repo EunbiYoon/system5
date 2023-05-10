@@ -76,13 +76,9 @@
             {% for index in detail_table_data.index %}
             <tr>
                 <th>{{index}}</th>
-                <td>dd</td>
-                <td>dd</td>
-                <td>dd</td>
-                <td>dd</td>
-                <td>dd</td>
-                <td>dd</td>
-                <td>dd</td>
+                {% for value in detail_table_data.values.2 %}
+                    <td>{{value}}</td>
+                {% endfor %}
             </tr>
             {% endfor %}
         </tbody>
