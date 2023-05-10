@@ -25,7 +25,7 @@ def detailView(request, slug, pk):
     graph_json_path=settings.STATICFILES_DIRS[0]+'/json/graph.json'
     with open(graph_json_path,'r') as f:
         data=json.load(f)
-    selected_graph=data[week_num]
+    selected_graph=data[week_num]["DR"]
     graph_column=selected_graph["columns"]
     graph_value=selected_graph["vs BOM"]
     graph_value1=selected_graph["PO Price Change"]
