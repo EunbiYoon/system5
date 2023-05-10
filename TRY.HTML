@@ -1,0 +1,125 @@
+{% extends 'base.html' %}
+
+{% block title %}Report{% endblock %}
+{% block name %}{{ post_detail.category}} Dashboard on {{ post_detail.title }}{% endblock %}
+
+{% block sidebar %}
+    <div class="detail-title">
+        <div class="title">Choose Model</div>
+        <div class="model">
+            <div class="model1">Dryer</div>
+            <div class="model2">Front Loader</div>
+            <div class="model3">Top Loader</div>
+        </div>
+    </div>
+    <div class="detail-side">
+        <div class="detail-menu">
+            Menu
+        </div>
+        <a href="{% url 'home_url' %}">
+            <div class="detail-url">Home</div>
+        </a>
+        <a href="{% url 'category_url' 'bom-comparison' %}">
+            <div class="detail-url">BOM Comparison</div>
+        </a>
+        <a href="{% url 'category_url' 'cost-review' %}">
+            <div class="detail-url">Cost Review</div>
+        </a>
+        <a href="{% url 'category_url' 'vi-activity' %}">
+            <div class="detail-url">VI Activity</div>
+        </a>
+    </div>
+{% endblock %}
+
+{% block container %}
+    {% load static %}
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- graph -->
+    <div class="detail-graph"><canvas id="chart"></canvas></div>
+    <script>
+        var chartData=JSON.parse('{{detail_graph_value|safe}}');
+        var chartLabels=JSON.parse('{{ detail_graph_label|safe }}');
+        var chartConfig={
+            type:'line',
+            data:{
+                labels:chartLabels,
+                datasets:[{
+                    label:'vs BOM',
+                    data:chartData,
+                    backgroundColor:'rgba(255,99,132,0.2)',
+                    borderColor:'rgba(255,99,132,1)',
+                    bordreWidth:1
+                }]
+            },
+            options:{
+                scales:{
+                    y:{
+                        beginAtZero:true
+                    }
+                }
+            }
+        };
+        var chart=new Chart(document.getElementById('chart'), chartConfig);
+    </script>
+
+    <!-- table -->
+    <table id="detail_table" class="display">
+        <thead>
+            <tr>
+                {% for col in detail_table_data.columns %}
+                    <th>{{ col }}</th>
+                {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in detail_table_data.index %}
+            <tr>
+                <th>{{ i }}</th>
+                {% for j in detail_table_data.values %}
+                    <td>{{ j|slice:":1"|first }}</td>
+                    <td>{{ j|slice:"1:2"|first }}</td>
+                    <td>{{ j|slice:"2:3"|first }}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+        
+    
+    <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#detail_table').DataTable();
+        });
+    </script>
+        
+
+    
+{% endblock %}
+
+{% block navigator %}
+    <div class="detail-comment">
+        <div class="title">Comments</div>
+        <div class="content">
+            {% if not post_detail.comment_model.all %}
+                <p>No comments yet!</p>
+            {% endif %}
+            {% for comment in post_detail.comment_model.all %}
+                <div class="detail-individual">
+                    <div class="right">{{comment.commenter_name}}</div>
+                    <div class="left">{{comment.date_added|date:"m.d h:i" }}</div>
+                    <div class="bottom">{{comment.comment_body}}</div>
+                </div>    
+                <div class="detail-individual-space"><small>e</small></div>
+            {% endfor %}
+            {% if user.is_authenticated %}
+                <form method="post" action="{% url 'detail_url' post_detail.slug post_detail.id %}">
+                    {% csrf_token %}
+                    {{ form_detail.as_table }}
+                    <input type="submit" value="Add Comment">
+                </form>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
