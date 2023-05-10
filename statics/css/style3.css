@@ -330,14 +330,15 @@ footer a{
 /* detail.html - sidebar */
 .detail-title{
   text-align: center;
-}
-.detail-title{
-  padding-bottom: 30px;
+  border:aquamarine 5px dotted;
+  border-radius: 15px;
+  margin-bottom: 30px;
 }
 .detail-title .title{
   padding:10px;
   font-weight: 800;
   font-size: 1.2rem;
+  border-bottom:aquamarine 5px dotted;
 }
 
 .detail-title .model{
@@ -348,14 +349,15 @@ footer a{
   border-radius: 10px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  background-color: #10abff;
 }
 .detail-title .model .model1, .model2,.model3{
-  border: 1px solid aquamarine;
+  border: 2px solid aquamarine;
+  margin: auto;
+  border-radius: 5px;
 }
 .detail-title .model .model1:hover, .model2:hover,.model3:hover{
   font-weight: 1000;
-  background-color: deeppink;
+  background-color:aquamarine;
   color:white;
   cursor:pointer;
 }
