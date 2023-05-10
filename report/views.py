@@ -29,6 +29,8 @@ def detailView(request, slug, pk):
     graph_label=selected_graph["labels"]
     graph_value=selected_graph["values"]
     graph_value1=selected_graph["values1"]
+    graph_value2=selected_graph["values2"]
+    graph_value3=selected_graph["values3"]
 
     #get table json data
     table_json_path=settings.STATICFILES_DIRS[0]+'/json/table.json'
@@ -57,6 +59,8 @@ def detailView(request, slug, pk):
         'detail_graph_label':json.dumps(graph_label),
         'detail_graph_value':json.dumps(graph_value),
         'detail_graph_value1':json.dumps(graph_value1),
+        'detail_graph_value2':json.dumps(graph_value2),
+        'detail_graph_value3':json.dumps(graph_value3),
         'detail_table_data':table_json
     }
     return render(request, 'detail.html', context)
