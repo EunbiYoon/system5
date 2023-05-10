@@ -408,9 +408,6 @@ footer a{
 /* detail.html - navigator */
 .detail-comment{
   text-align: center;
-}
-.detail-comment{
-  margin:30px 0;
   border:5px dotted #10abff80;
   border-radius: 15px;
 }
