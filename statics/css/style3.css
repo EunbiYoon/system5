@@ -342,8 +342,7 @@ footer a{
 }
 
 .detail-title .model{
-  font-size: 1.2rem;
-  font-weight: 600;
+  font-size: 1rem;
   cursor:pointer;
   padding:5px;
   border-radius: 10px;
