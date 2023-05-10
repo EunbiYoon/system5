@@ -26,7 +26,7 @@ def detailView(request, slug, pk):
     with open(graph_json_path,'r') as f:
         data=json.load(f)
     selected_graph=data[week_num]
-    graph_label=selected_graph["labels"]
+    graph_column=selected_graph["columns"]
     graph_value=selected_graph["vs BOM"]
     graph_value1=selected_graph["PO Price Change"]
     graph_value2=selected_graph["Substitute Change"]
@@ -56,7 +56,7 @@ def detailView(request, slug, pk):
         'post_detail':post,
         'new_comment': new_comment,
         'form_detail':comment_form,
-        'detail_graph_label':json.dumps(graph_label),
+        'detail_graph_column':json.dumps(graph_column),
         'detail_graph_value':json.dumps(graph_value),
         'detail_graph_value1':json.dumps(graph_value1),
         'detail_graph_value2':json.dumps(graph_value2),
