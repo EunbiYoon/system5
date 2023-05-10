@@ -357,7 +357,7 @@ footer a{
 }
 .detail-title .model .model1:hover, .model2:hover,.model3:hover{
   font-weight: 1000;
-  background-color:rgb(26, 228, 161);
+  background-color:rgb(0, 253, 169);
   color:white;
   cursor:pointer;
 }
