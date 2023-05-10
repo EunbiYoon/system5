@@ -491,7 +491,7 @@ footer a{
 
 /* category.html - container */
 .category-title{
-  color:rgb(255, 59, 92);
+  color:#F08080;
   font-weight: 1000;
   font-size:2.5rem;
   text-align: center;
@@ -506,19 +506,25 @@ footer a{
   margin-top: 50px;;
 }
 .category .category-detail{
-  background-color: #d0ede7;
+  background-color:aquamarine;
   color:black;
   margin: auto;
-  border:1px solid rgb(255, 255, 255);
+  border:1px solid black;
   width:30%;
   margin:5px auto;
   padding:10px;
   font-size:1rem
 }
 .category .category-detail:hover{
-  background-color:rgba(255, 59, 92, 0.357);
+  background-color:deeppink;
+  color:white;
   margin:10px auto;
-  border:5px solid grey;
+  border:3px solid black;
+  font-weight: 1000;
+}
+.category .category-detail .title{
+  font-size: 1.2rem;
+  font-weight: 800;
 }
 
 
