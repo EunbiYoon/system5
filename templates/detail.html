@@ -36,10 +36,11 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <!-- graph -->
-    <div class="detail-graph"><canvas id="chart"></canvas></div>
+    <div class="detail-graph"><canvas width="90vw" height="20vh" id="chart"></canvas></div>
     <script>
-        var chartData=JSON.parse('{{detail_graph_value|safe}}');
         var chartLabels=JSON.parse('{{ detail_graph_label|safe }}');
+        var chartData=JSON.parse('{{detail_graph_value|safe}}');
+        var chartData1=JSON.parse('{{detail_graph_value1|safe}}');
         var chartConfig={
             type:'line',
             data:{
@@ -49,6 +50,13 @@
                     data:chartData,
                     backgroundColor:'rgba(255,99,132,0.2)',
                     borderColor:'rgba(255,99,132,1)',
+                    bordreWidth:1
+                },
+                {
+                    label:'vs BOM',
+                    data:chartData1,
+                    backgroundColor:'blue',
+                    borderColor:'blue',
                     bordreWidth:1
                 }]
             },

@@ -20,7 +20,7 @@ def detailView(request, slug, pk):
     #get the specific posts
     post = Post.objects.get(slug=slug, pk=pk)
 
-    #get graph json data
+#get graph json data
     week_num=post.title
     graph_json_path=settings.STATICFILES_DIRS[0]+'/json/graph.json'
     with open(graph_json_path,'r') as f:
@@ -28,6 +28,7 @@ def detailView(request, slug, pk):
     selected_graph=data[week_num]
     graph_label=selected_graph["labels"]
     graph_value=selected_graph["values"]
+    graph_value1=selected_graph["values1"]
 
     #get table json data
     table_json_path=settings.STATICFILES_DIRS[0]+'/json/table.json'
@@ -55,7 +56,8 @@ def detailView(request, slug, pk):
         'form_detail':comment_form,
         'detail_graph_label':json.dumps(graph_label),
         'detail_graph_value':json.dumps(graph_value),
-        'detail_table_data':table_json,
+        'detail_graph_value1':json.dumps(graph_value1),
+        'detail_table_data':table_json
     }
     return render(request, 'detail.html', context)
 

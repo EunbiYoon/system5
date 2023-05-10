@@ -359,7 +359,7 @@ footer a{
 
 /* detail.html - container */
 .detail-graph{
-  width: 20%
+  margin:auto;
 }
 
 /* detail.html - navigator */
