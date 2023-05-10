@@ -27,10 +27,10 @@ def detailView(request, slug, pk):
         data=json.load(f)
     selected_graph=data[week_num]
     graph_label=selected_graph["labels"]
-    graph_value=selected_graph["values"]
-    graph_value1=selected_graph["values1"]
-    graph_value2=selected_graph["values2"]
-    graph_value3=selected_graph["values3"]
+    graph_value=selected_graph["vs BOM"]
+    graph_value1=selected_graph["PO Price Change"]
+    graph_value2=selected_graph["Substitute Change"]
+    graph_value3=selected_graph["PO + Substitute"]
 
     #get table json data
     table_json_path=settings.STATICFILES_DIRS[0]+'/json/table.json'

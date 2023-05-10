@@ -327,43 +327,8 @@ footer a{
   border-left: #17D4FE 5px solid;
 }
 
-  
 /* detail.html - sidebar */
-.detail-side{
-  text-align: center;
-  padding:3px 5px;
-  border: 5px dotted pink;
-  border-radius: 15px;
-}
-.detail-side .detail-menu{
-  border-bottom:  5px dotted pink;
-  padding:10px;
-  font-weight: 800;
-  font-size: 1.2rem;
-}
-.detail-side a{
-  text-decoration: none;
-}
-.detail-side .detail-url{
-  color:black;
-  text-decoration: none;
-  margin:20px 5px;
-  padding:10px;
-}
-.detail-side .detail-url:hover{
-  color:white;
-  background-color:deeppink;
-  border-radius: 5px;
-  font-weight: 800;
-}
-
-/* detail.html - container */
-.detail-graph{
-  margin:auto;
-}
-
-/* detail.html - navigator */
-.detail-title, .detail-comment{
+.detail-title{
   text-align: center;
 }
 .detail-title{
@@ -405,6 +370,43 @@ footer a{
 .detail-title .model .model3{
   grid-column: 3;
   margin:5px;
+}
+.detail-side{
+  text-align: center;
+  padding:3px 5px;
+  border: 5px dotted pink;
+  border-radius: 15px;
+}
+.detail-side .detail-menu{
+  border-bottom:  5px dotted pink;
+  padding:10px;
+  font-weight: 800;
+  font-size: 1.2rem;
+}
+.detail-side a{
+  text-decoration: none;
+}
+.detail-side .detail-url{
+  color:black;
+  text-decoration: none;
+  margin:20px 5px;
+  padding:10px;
+}
+.detail-side .detail-url:hover{
+  color:white;
+  background-color:deeppink;
+  border-radius: 5px;
+  font-weight: 800;
+}
+
+/* detail.html - container */
+.detail-graph{
+  margin:auto;
+}
+
+/* detail.html - navigator */
+.detail-comment{
+  text-align: center;
 }
 .detail-comment{
   margin:30px 0;
