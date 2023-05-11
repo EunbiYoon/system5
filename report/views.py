@@ -19,8 +19,23 @@ def post_titles(request):
 def detailView(request, slug, pk):
     #get the specific posts
     post = Post.objects.get(slug=slug, pk=pk)
+ 
+    #comment function
+    new_comment=None
+    if request.method == 'POST':
+        comment_form = CommentForm(request.POST, instance=post)
+        if comment_form.is_valid():
+            name = request.user.username
+            body = comment_form.cleaned_data['comment_body']
+            new_comment = Comment(post=post, commenter_name=name, comment_body=body)
+            new_comment.save()
+        else:
+            print('form is invalid')    
+    else:
+        comment_form = CommentForm()    
 
-#get graph json data
+
+    #get graph json data
     week_num=post.title
     graph_json_path=settings.STATICFILES_DIRS[0]+'/json/graph.json'
     with open(graph_json_path,'r') as f:
@@ -43,20 +58,6 @@ def detailView(request, slug, pk):
     with open(table_json_path,'r') as f:
         json_item=json.load(f)
     item_json=json_item
- 
-    #comment function
-    new_comment=None
-    if request.method == 'POST':
-        comment_form = CommentForm(request.POST, instance=post)
-        if comment_form.is_valid():
-            name = request.user.username
-            body = comment_form.cleaned_data['comment_body']
-            new_comment = Comment(post=post, commenter_name=name, comment_body=body)
-            new_comment.save()
-        else:
-            print('form is invalid')    
-    else:
-        comment_form = CommentForm()    
 
     context = {
         'post_detail':post,

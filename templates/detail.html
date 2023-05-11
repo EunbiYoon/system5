@@ -138,8 +138,8 @@
                     {% for row in item_table_data.rows %}
                     <tr>
                         <th>{{ row.index }}</th>
-                        {% for v in row.values %}
-                        <td>{{ v }}</td>
+                        {% for value in row.values %}
+                        <td>{{ value }}</td>
                         {% endfor %}
                     </tr>
                     {% endfor %}
@@ -168,7 +168,7 @@
                 <form method="post" action="{% url 'detail_url' post_detail.slug post_detail.id %}">
                     {% csrf_token %}
                     {{ form_detail.as_table }}
-                    <input type="submit" value="Add Comment">
+                    <input type="submit" value="Add Comment" name="action">
                 </form>
             {% else %}
                 <form>
