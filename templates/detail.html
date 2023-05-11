@@ -101,19 +101,19 @@
             var chart=new Chart(document.getElementById('chart'), chartConfig);
         </script>
     
-        <!-- table -->
+        <!-- table 1 -->
         <div class="detail-trend">
             <h3>Weekly Trend</h3>
             <table>
                 <thead>
                     <tr>
-                    {% for column in json_data.columns %}
+                    {% for column in trend_table_data.columns %}
                         <th>{{ column }}</th>
                     {% endfor %}
                     </tr>
                 </thead>
                 <tbody id="table-body">
-                    {% for row in json_data.rows %}
+                    {% for row in trend_table_data.rows %}
                     <tr>
                         <th>{{ row.index }}</th>
                         {% for value in row.values %}
@@ -129,13 +129,13 @@
             <table>
                 <thead>
                     <tr>
-                    {% for column in json_data.columns %}
+                    {% for column in item_table_data.columns %}
                         <th>{{ column }}</th>
                     {% endfor %}
                     </tr>
                 </thead>
                 <tbody id="table-body">
-                    {% for row in json_data.rows %}
+                    {% for row in item_table_data.rows %}
                     <tr>
                         <th>{{ row.index }}</th>
                         {% for v in row.values %}

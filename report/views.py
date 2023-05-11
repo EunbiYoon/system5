@@ -32,11 +32,17 @@ def detailView(request, slug, pk):
     graph_value2=selected_graph["Substitute Change"]
     graph_value3=selected_graph["PO + Substitute"]
 
-    #get table json data
-    table_json_path=settings.STATICFILES_DIRS[0]+'/json/table.json'
+    #get table trend json data
+    table_json_path=settings.STATICFILES_DIRS[0]+'/json/table-trend.json'
     with open(table_json_path,'r') as f:
-        json_file=json.load(f)
-    table_json=json_file
+        json_trend=json.load(f)
+    trend_json=json_trend
+
+    #get table item json data
+    table_json_path=settings.STATICFILES_DIRS[0]+'/json/table-item.json'
+    with open(table_json_path,'r') as f:
+        json_item=json.load(f)
+    item_json=json_item
  
     #comment function
     new_comment=None
@@ -61,7 +67,8 @@ def detailView(request, slug, pk):
         'detail_graph_value1':json.dumps(graph_value1),
         'detail_graph_value2':json.dumps(graph_value2),
         'detail_graph_value3':json.dumps(graph_value3),
-        'json_data':table_json
+        'trend_table_data':trend_json,
+        'item_table_data':item_json,
     }
     return render(request, 'detail.html', context)
 
