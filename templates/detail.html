@@ -90,21 +90,21 @@
     <!-- table -->
     <table>
         <thead>
-            <tr>
-                {% for column in detail_table_data.columns %}
-                    <th>{{column}}</th>
-                {% endfor %}
-            </tr>
-        </thead>
-        <tbody>
-            {% for index in detail_table_data.index %}
-            <tr>
-                <th>{{index}}</th>
-                {% for value in detail_table_data.values.2 %}
-                    <td>{{value}}</td>
-                {% endfor %}
-            </tr>
+          <tr>
+            {% for column in json_data.columns %}
+              <th>{{ column }}</th>
             {% endfor %}
+          </tr>
+        </thead>
+        <tbody id="table-body">
+          {% for row in json_data.rows %}
+            <tr>
+              <th>{{ row.index }}</th>
+              {% for v in row.values %}
+                <td>{{ v }}</td>
+              {% endfor %}
+            </tr>
+          {% endfor %}
         </tbody>
     </table>
 {% endblock %}
@@ -129,6 +129,10 @@
                     {% csrf_token %}
                     {{ form_detail.as_table }}
                     <input type="submit" value="Add Comment">
+                </form>
+            {% else %}
+                <form>
+                    if you want to remain comment, please login
                 </form>
             {% endif %}
         </div>

@@ -404,6 +404,10 @@ footer a{
 .detail-graph{
   margin:auto;
 }
+table, th, td {
+  border: 1px solid #96D4D4;
+  border-collapse: collapse;
+}
 
 /* detail.html - navigator */
 .detail-comment{

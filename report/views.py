@@ -36,7 +36,7 @@ def detailView(request, slug, pk):
     table_json_path=settings.STATICFILES_DIRS[0]+'/json/table.json'
     with open(table_json_path,'r') as f:
         json_file=json.load(f)
-    table_json=json_file[week_num]
+    table_json=json_file
  
     #comment function
     new_comment=None
@@ -61,7 +61,7 @@ def detailView(request, slug, pk):
         'detail_graph_value1':json.dumps(graph_value1),
         'detail_graph_value2':json.dumps(graph_value2),
         'detail_graph_value3':json.dumps(graph_value3),
-        'detail_table_data':table_json
+        'json_data':table_json
     }
     return render(request, 'detail.html', context)
 
