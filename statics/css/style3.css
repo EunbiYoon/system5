@@ -401,8 +401,20 @@ footer a{
 }
 
 /* detail.html - container */
-.detail-graph{
+.detail-container{
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
+  gap:10px;
   margin:auto;
+}
+.detail-graph{
+  grid-row:1;
+}
+.detail-trend{
+  grid-row:2;
+}
+.detail-item {
+  grid-row:3;
 }
 table, th, td {
   border: 1px solid #96D4D4;

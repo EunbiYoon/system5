@@ -32,81 +32,106 @@
 {% endblock %}
 
 {% block container %}
-    {% load static %}
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-    <!-- graph -->
-    <div class="detail-graph"><canvas width="90vw" height="20vh" id="chart"></canvas></div>
-    <script>
-        var chartColumn=JSON.parse('{{ detail_graph_column|safe }}');
-        var chartData=JSON.parse('{{detail_graph_value|safe}}');
-        var chartData1=JSON.parse('{{detail_graph_value1|safe}}');
-        var chartData2=JSON.parse('{{detail_graph_value2|safe}}');
-        var chartData3=JSON.parse('{{detail_graph_value3|safe}}');
-        var chartConfig={
-            data:{
-                labels:chartColumn,
-                datasets:[{
-                    type:'line',
-                    label:'vs BOM',
-                    data:chartData,
-                    borderColor:'rgba(255,99,132,1)',
-                    bordreWidth:1
+    <div class="detail-container">
+        {% load static %}
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+        <!-- graph -->
+        <div class="detail-graph"><canvas width="90vw" height="17vh" id="chart"></canvas></div>
+        <script>
+            var chartColumn=JSON.parse('{{ detail_graph_column|safe }}');
+            var chartData=JSON.parse('{{detail_graph_value|safe}}');
+            var chartData1=JSON.parse('{{detail_graph_value1|safe}}');
+            var chartData2=JSON.parse('{{detail_graph_value2|safe}}');
+            var chartData3=JSON.parse('{{detail_graph_value3|safe}}');
+            var chartConfig={
+                data:{
+                    labels:chartColumn,
+                    datasets:[{
+                        type:'line',
+                        label:'vs BOM',
+                        data:chartData,
+                        borderColor:'rgba(255,99,132,1)',
+                        bordreWidth:1
+                    },
+                    {
+                        type:'line',
+                        label:"PO + Substitute",
+                        data:chartData3,
+                        borderColor:'#F08080',
+                        bordreWidth:1
+                    },
+                    {
+                        type:'bar',
+                        label:"PO Price Change",
+                        data:chartData1,
+                        borderColor:'#4AABED',
+                        bordreWidth:1
+                    },
+                    {
+                        type:'bar',
+                        label:"Substitute Change",
+                        data:chartData2,
+                        backgroundColor:'#FFE0E6',
+                        bordreWidth:1
+                    }
+                ]
                 },
-                {
-                    type:'line',
-                    label:"PO + Substitute",
-                    data:chartData3,
-                    borderColor:'#F08080',
-                    bordreWidth:1
-                },
-                {
-                    type:'bar',
-                    label:"PO Price Change",
-                    data:chartData1,
-                    borderColor:'#4AABED',
-                    bordreWidth:1
-                },
-                {
-                    type:'bar',
-                    label:"Substitute Change",
-                    data:chartData2,
-                    backgroundColor:'#FFE0E6',
-                    bordreWidth:1
-                }
-            ]
-            },
-            options:{
-                scales:{
-                    y:{
-                        beginAtZero:true
+                options:{
+                    scales:{
+                        y:{
+                            beginAtZero:true
+                        }
                     }
                 }
-            }
-        };
-        var chart=new Chart(document.getElementById('chart'), chartConfig);
-    </script>
-
-    <!-- table -->
-    <table>
-        <thead>
-          <tr>
-            {% for column in json_data.columns %}
-              <th>{{ column }}</th>
-            {% endfor %}
-          </tr>
-        </thead>
-        <tbody id="table-body">
-          {% for row in json_data.rows %}
-            <tr>
-              <th>{{ row.index }}</th>
-              {% for v in row.values %}
-                <td>{{ v }}</td>
-              {% endfor %}
-            </tr>
-          {% endfor %}
-        </tbody>
-    </table>
+            };
+            var chart=new Chart(document.getElementById('chart'), chartConfig);
+        </script>
+    
+        <!-- table -->
+        <div class="detail-trend">
+            <table>
+                <thead>
+                  <tr>
+                    {% for column in json_data.columns %}
+                      <th>{{ column }}</th>
+                    {% endfor %}
+                  </tr>
+                </thead>
+                <tbody id="table-body">
+                  {% for row in json_data.rows %}
+                    <tr>
+                      <th>{{ row.index }}</th>
+                      {% for v in row.values %}
+                        <td>{{ v }}</td>
+                      {% endfor %}
+                    </tr>
+                  {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="detail-item">
+            <table>
+                <thead>
+                  <tr>
+                    {% for column in json_data.columns %}
+                      <th>{{ column }}</th>
+                    {% endfor %}
+                  </tr>
+                </thead>
+                <tbody id="table-body">
+                  {% for row in json_data.rows %}
+                    <tr>
+                      <th>{{ row.index }}</th>
+                      {% for v in row.values %}
+                        <td>{{ v }}</td>
+                      {% endfor %}
+                    </tr>
+                  {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
 {% endblock %}
 
 {% block navigator %}
