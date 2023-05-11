@@ -3,6 +3,11 @@
     "rows": [
         {"index": "John", "values": [25, "New York"]},
         {"index": "Mary", "values": [31, "San Francisco"]},
+        {"index": "Peter", "values": [45, "Seattle"]},
+        {"index": "Peter", "values": [45, "Seattle"]},
+        {"index": "Peter", "values": [45, "Seattle"]},
+        {"index": "Peter", "values": [45, "Seattle"]},
+        {"index": "Peter", "values": [45, "Seattle"]},
         {"index": "Peter", "values": [45, "Seattle"]}
     ]
 }

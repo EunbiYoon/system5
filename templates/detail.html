@@ -33,11 +33,10 @@
 
 {% block container %}
     <div class="detail-container">
-        {% load static %}
-        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    
         <!-- graph -->
         <div class="detail-graph"><canvas width="90vw" height="17vh" id="chart"></canvas></div>
+        {% load static %}
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         <script>
             var chartColumn=JSON.parse('{{ detail_graph_column|safe }}');
             var chartData=JSON.parse('{{detail_graph_value|safe}}');
@@ -82,6 +81,12 @@
                         y:{
                             beginAtZero:true
                         }
+                    },
+                    plugins:{
+                        title:{
+                            display:true,
+                            text:'Trend Graph'
+                        }
                     }
                 }
             };
@@ -90,44 +95,46 @@
     
         <!-- table -->
         <div class="detail-trend">
+            <h3>Weekly Trend</h3>
             <table>
                 <thead>
-                  <tr>
+                    <tr>
                     {% for column in json_data.columns %}
-                      <th>{{ column }}</th>
+                        <th>{{ column }}</th>
                     {% endfor %}
-                  </tr>
+                    </tr>
                 </thead>
                 <tbody id="table-body">
-                  {% for row in json_data.rows %}
+                    {% for row in json_data.rows %}
                     <tr>
-                      <th>{{ row.index }}</th>
-                      {% for value in row.values %}
+                        <th>{{ row.index }}</th>
+                        {% for value in row.values %}
                         <td>{{ value }}</td>
-                      {% endfor %}
+                        {% endfor %}
                     </tr>
-                  {% endfor %}
+                    {% endfor %}
                 </tbody>
             </table>
         </div>
         <div class="detail-item">
+            <h3>Increased Item</h3>
             <table>
                 <thead>
-                  <tr>
+                    <tr>
                     {% for column in json_data.columns %}
-                      <th>{{ column }}</th>
+                        <th>{{ column }}</th>
                     {% endfor %}
-                  </tr>
+                    </tr>
                 </thead>
                 <tbody id="table-body">
-                  {% for row in json_data.rows %}
+                    {% for row in json_data.rows %}
                     <tr>
-                      <th>{{ row.index }}</th>
-                      {% for v in row.values %}
+                        <th>{{ row.index }}</th>
+                        {% for v in row.values %}
                         <td>{{ v }}</td>
-                      {% endfor %}
+                        {% endfor %}
                     </tr>
-                  {% endfor %}
+                    {% endfor %}
                 </tbody>
             </table>
         </div>
