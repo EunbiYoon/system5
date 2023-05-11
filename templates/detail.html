@@ -50,15 +50,15 @@
                         type:'line',
                         label:'vs BOM',
                         data:chartData,
-                        borderColor:'rgba(255,99,132,1)',
-                        bordreWidth:1
+                        borderColor: 'rgba(54, 162, 235, 1)',
+                        borderWidth: 1,
+                        fill: false
                     },
                     {
                         type:'line',
                         label:"PO + Substitute",
                         data:chartData3,
                         borderColor:'#F08080',
-                        bordreWidth:1
                     },
                     {
                         type:'bar',
@@ -87,6 +87,13 @@
                             display:true,
                             text:'Trend Graph',
                             font:{size:15,family: 'Montserrat'}
+                        },
+                        legend:{
+                            labels:{
+                                usePointStyle: true,
+                                pointStyle: 'line',
+                                display:true,
+                                font:{size:12,family: 'Montserrat'}}
                         }
                     }
                 }
