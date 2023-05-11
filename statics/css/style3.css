@@ -412,10 +412,13 @@ footer a{
 }
 .detail-trend{
   grid-row:2;
+  margin:auto;
 }
 .detail-item {
   grid-row:3;
+  margin:auto;
 }
+
 table, th, td {
   border: 1px solid #96D4D4;
   border-collapse: collapse;

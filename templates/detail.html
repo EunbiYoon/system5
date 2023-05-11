@@ -102,8 +102,8 @@
                   {% for row in json_data.rows %}
                     <tr>
                       <th>{{ row.index }}</th>
-                      {% for v in row.values %}
-                        <td>{{ v }}</td>
+                      {% for value in row.values %}
+                        <td>{{ value }}</td>
                       {% endfor %}
                     </tr>
                   {% endfor %}
